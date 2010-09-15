@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.swt.opengl;
 
+import java.nio.Buffer;
+
 public class GL {
 	
 	//
@@ -582,5 +584,375 @@ public class GL {
 	public static final int GL_CLIENT_VERTEX_ARRAY_BIT = 0x00000002;
 	public static final int GL_ALL_CLIENT_ATTRIB_BITS  = 0xFFFFFFFF;
 	public static final int GL_CLIENT_ALL_ATTRIB_BITS  = 0xFFFFFFFF;
+
+	// type mapping
+	// GLenum -> int
+	// GLboolean -> boolean
+	// GLbitfield -> int
+	// GLvoid -> void
+	// GLbyte -> byte
+	// GLshort -> short
+	// GLint -> int
+	// GLubyte -> byte
+	// GLushort -> short
+	// GLuint -> int
+	// GLsizei -> int
+	// GLfloat -> float
+	// GLclampf -> float
+	// GLdouble -> double
+	// GLclampd -> double
+
+	public static native void glClearIndex(float c);
+	public static native void glClearColor(float red, float green, float blue, float alpha);
+	public static native void glClear(int mask);
+	public static native void glIndexMask(int mask);
+	public static native void glColorMask(boolean red, boolean green, boolean blue, boolean alpha);
+	public static native void glAlphaFunc(int func, float ref);
+	public static native void glBlendFunc(int sfactor, int dfactor);
+	public static native void glLogicOp(int opcode);
+	public static native void glCullFace(int mode);
+	public static native void glFrontFace(int mode);
+	public static native void glPointSize(float size);
+	public static native void glLineWidth(float width);
+	public static native void glLineStipple(int factor, short pattern);
+	public static native void glPolygonMode(int face, int mode);
+	public static native void glPolygonOffset(float factor, float units);
+	public static native void glPolygonStipple(byte[] mask);
+	public static native void glGetPolygonStipple(byte[][] mask);
+	public static native void glEdgeFlag(boolean flag);
+	public static native void glEdgeFlagv(boolean[] flag);
+	public static native void glScissor(int x, int y, int width, int height);
+	public static native void glClipPlane(int plane, double[] equation);
+	public static native void glGetClipPlane(int plane, double[][] equation);
+	public static native void glDrawBuffer(int mode);
+	public static native void glReadBuffer(int mode);
+	public static native void glEnable(int cap);
+	public static native void glDisable(int cap);
+	public static native boolean glIsEnabled(int cap);
+	public static native void glEnableClientState(int cap);
+	public static native void glDisableClientState(int cap);
+	public static native void glGetBooleanv(int pname, boolean[] params);
+	public static native void glGetDoublev(int pname, double[] params);
+	public static native void glGetFloatv(int pname, float[] params);
+	public static native void glGetIntegerv(int pname, int[] params);
+	public static native void glPushAttrib(int mask);
+	public static native void glPopAttrib();
+	public static native void glPushClientAttrib(int mask);
+	public static native void glPopClientAttrib();
+	public static native int glRenderMode(int mode);
+	public static native int glGetError();
+	public static native String glGetString(int name);
+	public static native void glFinish();
+	public static native void glFlush();
+	public static native void glHint(int target, int mode);
+
+	public static native void glClearDepth(double depth);
+	public static native void glDepthFunc(int func);
+	public static native void glDepthMask(boolean flag);
+	public static native void glDepthRange(double near_val, double far_val);
+
+	public static native void glClearAccum(float red, float green, float blue, float alpha);
+	public static native void glAccum(int op, float value);
+
+	public static native void glMatrixMode(int mode);
+	public static native void glOrtho(double left, double right, double bottom, double top, double near_val, double far_val);
+	public static native void glFrustum(double left, double right, double bottom, double top, double near_val, double far_val);
+	public static native void glViewport(int x, int y, int width, int height);
+	public static native void glPushMatrix();
+	public static native void glPopMatrix();
+	public static native void glLoadIdentity();
+	public static native void glLoadMatrixd(double[] m);
+	public static native void glLoadMatrixf(float[] m);
+	public static native void glMultMatrixd(double[] m);
+	public static native void glMultMatrixf(float[] m);
+	public static native void glRotated(double angle, double x, double y, double z);
+	public static native void glRotatef(float angle, float x, float y, float z);
+	public static native void glScaled(double x, double y, double z);
+	public static native void glScalef(float x, float y, float z);
+	public static native void glTranslated(double x, double y, double z);
+	public static native void glTranslatef(float x, float y, float z);
+
+	public static native boolean glIsList(int list);
+	public static native void glDeleteLists(int list, int range);
+	public static native int glGenLists(int range);
+	public static native void glNewList(int list, int mode);
+	public static native void glEndList();
+	public static native void glCallList(int list);
+	public static native void glCallLists(int n, int type, Buffer lists);
+	public static native void glListBase(int base);
+
+	public static native void glBegin(int mode);
+	public static native void glEnd();
+	public static native void glVertex2d(double x, double y);
+	public static native void glVertex2f(float x, float y);
+	public static native void glVertex2i(int x, int y);
+	public static native void glVertex2s(short x, short y);
+	public static native void glVertex3d(double x, double y, double z);
+	public static native void glVertex3f(float x, float y, float z);
+	public static native void glVertex3i(int x, int y, int z);
+	public static native void glVertex3s(short x, short y, short z);
+	public static native void glVertex4d(double x, double y, double z, double w);
+	public static native void glVertex4f(float x, float y, float z, float w);
+	public static native void glVertex4i(int x, int y, int z, int w);
+	public static native void glVertex4s(short x, short y, short z, short w);
+	public static native void glVertex2dv(double[] v);
+	public static native void glVertex2fv(float[] v);
+	public static native void glVertex2iv(int[] v);
+	public static native void glVertex2sv(short[] v);
+	public static native void glVertex3dv(double[] v);
+	public static native void glVertex3fv(float[] v);
+	public static native void glVertex3iv(int[] v);
+	public static native void glVertex3sv(short[] v);
+	public static native void glVertex4dv(double[] v);
+	public static native void glVertex4fv(float[] v);
+	public static native void glVertex4iv(int[] v);
+	public static native void glVertex4sv(short[] v);
+	public static native void glNormal3b(byte nx, byte ny, byte nz);
+	public static native void glNormal3d(double nx, double ny, double nz);
+	public static native void glNormal3f(float nx, float ny, float nz);
+	public static native void glNormal3i(int nx, int ny, int nz);
+	public static native void glNormal3s(short nx, short ny, short nz);
+	public static native void glNormal3bv(byte[] v);
+	public static native void glNormal3dv(double[] v);
+	public static native void glNormal3fv(float[] v);
+	public static native void glNormal3iv(int[] v);
+	public static native void glNormal3sv(short[] v);
+	public static native void glIndexd(double c);
+	public static native void glIndexf(float c);
+	public static native void glIndexi(int c);
+	public static native void glIndexs(short c);
+	public static native void glIndexub(byte c);
+	public static native void glIndexdv(double[] c);
+	public static native void glIndexfv(float[] c);
+	public static native void glIndexiv(int[] c);
+	public static native void glIndexsv(short[] c);
+	public static native void glIndexubv(byte[] c);
+	public static native void glColor3b(byte red, byte green, byte blue);
+	public static native void glColor3d(double red, double green, double blue);
+	public static native void glColor3f(float red, float green, float blue);
+	public static native void glColor3i(int red, int green, int blue);
+	public static native void glColor3s(short red, short green, short blue);
+	public static native void glColor3ub(byte red, byte green, byte blue);
+	public static native void glColor3ui(int red, int green, int blue);
+	public static native void glColor3us(short red, short green, short blue);
+	public static native void glColor4b(byte red, byte green, byte blue, byte alpha);
+	public static native void glColor4d(double red, double green, double blue, double alpha);
+	public static native void glColor4f(float red, float green, float blue, float alpha);
+	public static native void glColor4i(int red, int green, int blue, int alpha);
+	public static native void glColor4s(short red, short green, short blue, short alpha);
+	public static native void glColor4ub(byte red, byte green, byte blue, byte alpha);
+	public static native void glColor4ui(int red, int green, int blue, int alpha);
+	public static native void glColor4us(short red, short green, short blue, short alpha);
+	public static native void glColor3bv(byte[] v);
+	public static native void glColor3dv(double[] v);
+	public static native void glColor3fv(float[] v);
+	public static native void glColor3iv(int[] v);
+	public static native void glColor3sv(short[] v);
+	public static native void glColor3ubv(byte[] v);
+	public static native void glColor3uiv(int[] v);
+	public static native void glColor3usv(short[] v);
+	public static native void glColor4bv(byte[] v);
+	public static native void glColor4dv(double[] v);
+	public static native void glColor4fv(float[] v);
+	public static native void glColor4iv(int[] v);
+	public static native void glColor4sv(short[] v);
+	public static native void glColor4ubv(byte[] v);
+	public static native void glColor4uiv(int[] v);
+	public static native void glColor4usv(short[] v);
+	public static native void glTexCoord1d(double s);
+	public static native void glTexCoord1f(float s);
+	public static native void glTexCoord1i(int s);
+	public static native void glTexCoord1s(short s);
+	public static native void glTexCoord2d(double s, double t);
+	public static native void glTexCoord2f(float s, float t);
+	public static native void glTexCoord2i(int s, int t);
+	public static native void glTexCoord2s(short s, short t);
+	public static native void glTexCoord3d(double s, double t, double r);
+	public static native void glTexCoord3f(float s, float t, float r);
+	public static native void glTexCoord3i(int s, int t, int r);
+	public static native void glTexCoord3s(short s, short t, short r);
+	public static native void glTexCoord4d(double s, double t, double r, double q);
+	public static native void glTexCoord4f(float s, float t, float r, float q);
+	public static native void glTexCoord4i(int s, int t, int r, int q);
+	public static native void glTexCoord4s(short s, short t, short r, short q);
+	public static native void glTexCoord1dv(double[] v);
+	public static native void glTexCoord1fv(float[] v);
+	public static native void glTexCoord1iv(int[] v);
+	public static native void glTexCoord1sv(short[] v);
+	public static native void glTexCoord2dv(double[] v);
+	public static native void glTexCoord2fv(float[] v);
+	public static native void glTexCoord2iv(int[] v);
+	public static native void glTexCoord2sv(short[] v);
+	public static native void glTexCoord3dv(double[] v);
+	public static native void glTexCoord3fv(float[] v);
+	public static native void glTexCoord3iv(int[] v);
+	public static native void glTexCoord3sv(short[] v);
+	public static native void glTexCoord4dv(double[] v);
+	public static native void glTexCoord4fv(float[] v);
+	public static native void glTexCoord4iv(int[] v);
+	public static native void glTexCoord4sv(short[] v);
+	public static native void glRasterPos2d(double x, double y);
+	public static native void glRasterPos2f(float x, float y);
+	public static native void glRasterPos2i(int x, int y);
+	public static native void glRasterPos2s(short x, short y);
+	public static native void glRasterPos3d(double x, double y, double z);
+	public static native void glRasterPos3f(float x, float y, float z);
+	public static native void glRasterPos3i(int x, int y, int z);
+	public static native void glRasterPos3s(short x, short y, short z);
+	public static native void glRasterPos4d(double x, double y, double z, double w);
+	public static native void glRasterPos4f(float x, float y, float z, float w);
+	public static native void glRasterPos4i(int x, int y, int z, int w);
+	public static native void glRasterPos4s(short x, short y, short z, short w);
+	public static native void glRasterPos2dv(double[] v);
+	public static native void glRasterPos2fv(float[] v);
+	public static native void glRasterPos2iv(int[] v);
+	public static native void glRasterPos2sv(short[] v);
+	public static native void glRasterPos3dv(double[] v);
+	public static native void glRasterPos3fv(float[] v);
+	public static native void glRasterPos3iv(int[] v);
+	public static native void glRasterPos3sv(short[] v);
+	public static native void glRasterPos4dv(double[] v);
+	public static native void glRasterPos4fv(float[] v);
+	public static native void glRasterPos4iv(int[] v);
+	public static native void glRasterPos4sv(short[] v);
+	public static native void glRectd(double x1, double y1, double x2, double y2);
+	public static native void glRectf(float x1, float y1, float x2, float y2);
+	public static native void glRecti(int x1, int y1, int x2, int y2);
+	public static native void glRects(short x1, short y1, short x2, short y2);
+	public static native void glRectdv(double[] v1, double[] v2);
+	public static native void glRectfv(float[] v1, float[] v2);
+	public static native void glRectiv(int[] v1, int[] v2);
+	public static native void glRectsv(short[] v1, short[] v2);
+
+	public static native void glShadeModel(int mode);
+	public static native void glLightf(int light, int pname, float param);
+	public static native void glLighti(int light, int pname, int param);
+	public static native void glLightfv(int light, int pname, float[] params);
+	public static native void glLightiv(int light, int pname, int[] params);
+	public static native void glGetLightfv(int light, int pname, float[][] params);
+	public static native void glGetLightiv(int light, int pname, int[][] params);
+	public static native void glLightModelf(int pname, float param);
+	public static native void glLightModeli(int pname, int param);
+	public static native void glLightModelfv(int pname, float[] params);
+	public static native void glLightModeliv(int pname, int[] params);
+	public static native void glMaterialf(int face, int pname, float param);
+	public static native void glMateriali(int face, int pname, int param);
+	public static native void glMaterialfv(int face, int pname, float[] params);
+	public static native void glMaterialiv(int face, int pname, int[] params);
+	public static native void glGetMaterialfv(int face, int pname, float[][] params);
+	public static native void glGetMaterialiv(int face, int pname, int[] params);
+	public static native void glColorMaterial(int face, int mode);
+
+	public static native void glPixelZoom(float xfactor, float yfactor);
+	public static native void glPixelStoref(int pname, float param);
+	public static native void glPixelStorei(int pname, int param);
+	public static native void glPixelTransferf(int pname, float param);
+	public static native void glPixelTransferi(int pname, int param);
+	public static native void glPixelMapfv(int map, int mapsize, float[] values);
+	public static native void glPixelMapuiv(int map, int mapsize, int[] values);
+	public static native void glPixelMapusv(int map, int mapsize, short[] values);
+	public static native void glGetPixelMapfv(int map, float[][] values);
+	public static native void glGetPixelMapuiv(int map, int[][] values);
+	public static native void glGetPixelMapusv(int map, short[][] values);
+	public static native void glBitmap(int width, int height, float xorig, float yorig, float xmove, float ymove, Buffer bitmap);
+	public static native void glReadPixels(int x, int y, int width, int height, int format, int type, Buffer pixels);
+	public static native void glDrawPixels(int width, int height, int format, int type, Buffer pixels);
+	public static native void glCopyPixels(int x, int y, int width, int height, int type);
+
+	public static native void glStencilFunc(int func, int ref, int mask);
+	public static native void glStencilMask(int mask);
+	public static native void glStencilOp(int fail, int zfail, int zpass);
+	public static native void glClearStencil(int s);
+
+	public static native void glTexGend(int coord, int pname, double param);
+	public static native void glTexGenf(int coord, int pname, float param);
+	public static native void glTexGeni(int coord, int pname, int param);
+	public static native void glTexGendv(int coord, int pname, double[] params);
+	public static native void glTexGenfv(int coord, int pname, float[] params);
+	public static native void glTexGeniv(int coord, int pname, int[] params);
+	public static native void glGetTexGendv(int coord, int pname, double[][] params);
+	public static native void glGetTexGenfv(int coord, int pname, float[][] params);
+	public static native void glGetTexGeniv(int coord, int pname, int[][] params);
+	public static native void glTexEnvf(int target, int pname, float param);
+	public static native void glTexEnvi(int target, int pname, int param);
+	public static native void glTexEnvfv(int target, int pname, float[] params);
+	public static native void glTexEnviv(int target, int pname, int[] params);
+	public static native void glGetTexEnvfv(int target, int pname, float[][] params);
+	public static native void glGetTexEnviv(int target, int pname, int[][] params);
+	public static native void glTexParameterf(int target, int pname, float param);
+	public static native void glTexParameteri(int target, int pname, int param);
+	public static native void glTexParameterfv(int target, int pname, float[] params);
+	public static native void glTexParameteriv(int target, int pname, int[] params);
+	public static native void glGetTexParameterfv(int target, int pname, float[][] params);
+	public static native void glGetTexParameteriv(int target, int pname, int[][] params);
+	public static native void glGetTexLevelParameterfv(int target, int level, int pname, float[][] params);
+	public static native void glGetTexLevelParameteriv(int target, int level, int pname, int[][] params);
+	public static native void glTexImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, Buffer pixels);
+	public static native void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, Buffer pixels);
+	public static native void glGetTexImage(int target, int level, int format, int type, Buffer pixels);
+
+	public static native void glMap1d(int target, double u1, double u2, int stride, int order, double[] points);
+	public static native void glMap1f(int target, float u1, float u2, int stride, int order, float[] points);
+	public static native void glMap2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points);
+	public static native void glMap2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points);
+	public static native void glGetMapdv(int target, int query, double[][] v);
+	public static native void glGetMapfv(int target, int query, float[][] v);
+	public static native void glGetMapiv(int target, int query, int[][] v);
+	public static native void glEvalCoord1d(double u);
+	public static native void glEvalCoord1f(float u);
+	public static native void glEvalCoord1dv(double[] u);
+	public static native void glEvalCoord1fv(float[] u);
+	public static native void glEvalCoord2d(double u, double v);
+	public static native void glEvalCoord2f(float u, float v);
+	public static native void glEvalCoord2dv(double[] u);
+	public static native void glEvalCoord2fv(float[] u);
+	public static native void glMapGrid1d(int un, double u1, double u2);
+	public static native void glMapGrid1f(int un, float u1, float u2);
+	public static native void glMapGrid2d(int un, double u1, double u2, int vn, double v1, double v2);
+	public static native void glMapGrid2f(int un, float u1, float u2, int vn, float v1, float v2);
+	public static native void glEvalPoint1(int i);
+	public static native void glEvalPoint2(int i, int j);
+	public static native void glEvalMesh1(int mode, int i1, int i2);
+	public static native void glEvalMesh2(int mode, int i1, int i2, int j1, int j2);
+
+	public static native void glFogf(int pname, float param);
+	public static native void glFogi(int pname, int param);
+	public static native void glFogfv(int pname, float[] params);
+	public static native void glFogiv(int pname, int[] params );
+
+	public static native void glFeedbackBuffer(int size, int type, float[][] buffer);
+	public static native void glPassThrough(float token);
+	public static native void glSelectBuffer(int size, int[][] buffer);
+	public static native void glInitNames();
+	public static native void glLoadName(int name);
+	public static native void glPushName(int name);
+	public static native void glPopName();
+
+
+	public static native void glGenTextures(int n, int[][] textures);
+	public static native void glDeleteTextures(int n, int[] textures);
+	public static native void glBindTexture(int target, int texture);
+	public static native void glPrioritizeTextures(int n, int[] textures, float[] priorities);
+	public static native boolean glAreTexturesResident(int n, int[] textures, boolean[][] residences);
+	public static native boolean glIsTexture(int texture);
+
+	public static native void glTexSubImage1D(int target, int level, int xoffset, int width, int format, int type, Buffer pixels);
+	public static native void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, Buffer pixels);
+	public static native void glCopyTexImage1D(int target, int level, int internalformat, int x, int y, int width, int border);
+	public static native void glCopyTexImage2D(int target, int level, int internalformat, int x, int y, int width, int height, int border);
+	public static native void glCopyTexSubImage1D(int target, int level, int xoffset, int x, int y, int width);
+	public static native void glCopyTexSubImage2D(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height);
+
+	public static native void glVertexPointer(int size, int type, int stride, Buffer ptr);
+	public static native void glNormalPointer(int type, int stride, Buffer ptr);
+	public static native void glColorPointer(int size, int type, int stride, Buffer ptr);
+	public static native void glIndexPointer(int type, int stride, Buffer ptr);
+	public static native void glTexCoordPointer(int size, int type, int stride, Buffer ptr);
+	public static native void glEdgeFlagPointer(int stride, Buffer ptr);
+	public static native void glGetPointerv(int pname, Buffer params);
+	public static native void glArrayElement(int i);
+	public static native void glDrawArrays(int mode, int first, int count);
+	public static native void glDrawElements(int mode, int count, int type, Buffer indices);
+	public static native void glInterleavedArrays(int format, int stride, Buffer pointer);
 
 }
