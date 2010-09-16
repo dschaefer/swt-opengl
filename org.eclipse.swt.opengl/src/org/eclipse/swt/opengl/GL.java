@@ -621,8 +621,8 @@ public class GL {
 	public static native void glLineStipple(int factor, short pattern);
 	public static native void glPolygonMode(int face, int mode);
 	public static native void glPolygonOffset(float factor, float units);
-	public static native void glPolygonStipple(byte[] mask);
-	public static native void glGetPolygonStipple(byte[][] mask);
+	public static native void glPolygonStipple(Buffer mask);
+	public static native void glGetPolygonStipple(Buffer mask);
 	public static native void glEdgeFlag(boolean flag);
 	public static native void glEdgeFlagv(boolean[] flag);
 	public static native void glScissor(int x, int y, int width, int height);
