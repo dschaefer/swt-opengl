@@ -14,6 +14,10 @@ import java.nio.Buffer;
 
 public class GL {
 	
+	static {
+		System.loadLibrary("swt-opengl");
+	}
+	
 	//
 	// GL_VERSION_1_1
 	//
@@ -927,7 +931,6 @@ public class GL {
 	public static native void glLoadName(int name);
 	public static native void glPushName(int name);
 	public static native void glPopName();
-
 
 	public static native void glGenTextures(int n, int[][] textures);
 	public static native void glDeleteTextures(int n, int[] textures);

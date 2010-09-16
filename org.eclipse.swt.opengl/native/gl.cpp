@@ -11,4 +11,9 @@
 
 #include <GL/gl.h>
 #include "glext.h"
+#include "jni.h"
 
+extern "C"
+JNIEXPORT void JNICALL Java_org_eclipse_swt_opengl_GL_glClearIndex(JNIEnv * env, jclass cls, jfloat c) {
+	glClearIndex(c);
+}

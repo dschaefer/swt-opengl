@@ -1,9 +1,10 @@
-TARGET = swt-opengl.dll
+TARGET = ../os/win32/x86/swt-opengl.dll
 
 OBJS = gl.o
-CXXFLAGS = -I /mingw/include/GL
+LIBS = -lopengl32
 
 all:	$(TARGET)
 
 $(TARGET):	$(OBJS)
-	g++ -shared -o swt-opengl.dll $(OBJS)
+	@[ -d $(dir $(TARGET)) ] || mkdir -p $(dir $(TARGET))
+	g++ -shared -Wl,--kill-at -o $(TARGET) $(OBJS) $(LIBS)

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: org.eclipse.swt.opengl.test
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.swt.opengl.test.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.swt.opengl;bundle-version="1.0.0",
+ org.junit
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
