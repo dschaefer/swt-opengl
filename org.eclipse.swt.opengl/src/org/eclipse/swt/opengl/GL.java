@@ -621,10 +621,10 @@ public class GL {
 	public static native void glLineStipple(int factor, short pattern);
 	public static native void glPolygonMode(int face, int mode);
 	public static native void glPolygonOffset(float factor, float units);
-	public static native void glPolygonStipple(Buffer mask);
-	public static native void glGetPolygonStipple(Buffer mask);
+	public static native void glPolygonStipple(Buffer mask); // ubyte * mask
+	public static native void glGetPolygonStipple(Buffer mask); // void * mask
 	public static native void glEdgeFlag(boolean flag);
-	public static native void glEdgeFlagv(Buffer flag);
+	public static native void glEdgeFlagv(Buffer flag); // boolean * flag
 	public static native void glScissor(int x, int y, int width, int height);
 	public static native void glClipPlane(int plane, Buffer equation); // double equation[4]
 	public static native void glGetClipPlane(int plane, Buffer equation); // double equation[4]
@@ -665,10 +665,10 @@ public class GL {
 	public static native void glPushMatrix();
 	public static native void glPopMatrix();
 	public static native void glLoadIdentity();
-	public static native void glLoadMatrixd(double[] m);
-	public static native void glLoadMatrixf(float[] m);
-	public static native void glMultMatrixd(double[] m);
-	public static native void glMultMatrixf(float[] m);
+	public static native void glLoadMatrixd(Buffer m); // double m[16]
+	public static native void glLoadMatrixf(Buffer m); // float m[16]
+	public static native void glMultMatrixd(Buffer m); // double m[16]
+	public static native void glMultMatrixf(Buffer m); // float m[16]
 	public static native void glRotated(double angle, double x, double y, double z);
 	public static native void glRotatef(float angle, float x, float y, float z);
 	public static native void glScaled(double x, double y, double z);

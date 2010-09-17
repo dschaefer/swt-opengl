@@ -17,6 +17,8 @@
 	extern "C" JNIEXPORT type JNICALL Java_org_eclipse_swt_opengl_GL_ \
 		## func(JNIEnv * env, jclass cls, ## args)
 
+#define BUFF(type, name) (type *)env->GetDirectBufferAddress(name)
+
 M(void, glClearIndex, jfloat c) {
 	glClearIndex(c);
 }
@@ -78,13 +80,11 @@ M(void, glPolygonOffset, jfloat factor, jfloat units) {
 }
 
 M(void, glPolygonStipple, jobject mask) {
-	const GLubyte * cmask = (GLubyte *)env->GetDirectBufferAddress(mask);
-	glPolygonStipple(cmask);
+	glPolygonStipple(BUFF(GLubyte, mask));
 }
 
 M(void, glGetPolygonStipple, jobject mask) {
-	GLubyte * cmask = (GLubyte *)env->GetDirectBufferAddress(mask);
-	glGetPolygonStipple(cmask);
+	glGetPolygonStipple(BUFF(GLubyte, mask));
 }
 
 M(void, glEdgeFlag, jboolean flag) {
@@ -92,8 +92,7 @@ M(void, glEdgeFlag, jboolean flag) {
 }
 
 M(void, glEdgeFlagv, jobject flag) {
-	GLboolean * cflag = (GLboolean *)env->GetDirectBufferAddress(flag);
-	glEdgeFlagv(cflag);
+	glEdgeFlagv(BUFF(GLboolean, flag));
 }
 
 M(void, glScissor, jint x, jint y, jint width, jint height) {
@@ -101,13 +100,11 @@ M(void, glScissor, jint x, jint y, jint width, jint height) {
 }
 
 M(void, glClipPlane, jint plane, jobject equation) {
-	const GLdouble * cequation = (GLdouble *)env->GetDirectBufferAddress(equation);
-	glClipPlane(plane, cequation);
+	glClipPlane(plane, BUFF(GLdouble, equation));
 }
 
 M(void, glGetClipPlane, jint plane, jobject equation) {
-	GLdouble * cequation = (GLdouble *)env->GetDirectBufferAddress(equation);
-	glGetClipPlane(plane, cequation);
+	glGetClipPlane(plane, BUFF(GLdouble, equation));
 }
 
 M(void, glDrawBuffer, jint mode) {
@@ -139,23 +136,19 @@ M(void, glDisableClientState, jint cap) {
 }
 
 M(void, glGetBooleanv, jint pname, jobject params) {
-	GLboolean * cparams = (GLboolean *)env->GetDirectBufferAddress(params);
-	glGetBooleanv(pname, cparams);
+	glGetBooleanv(pname, BUFF(GLboolean, params));
 }
 
 M(void, glGetDoublev, jint pname, jobject params) {
-	GLdouble * cparams = (GLdouble *)env->GetDirectBufferAddress(params);
-	glGetDoublev(pname, cparams);
+	glGetDoublev(pname, BUFF(GLdouble, params));
 }
 
 M(void, glGetFloatv, jint pname, jobject params) {
-	GLfloat * cparams = (GLfloat *)env->GetDirectBufferAddress(params);
-	glGetFloatv(pname, cparams);
+	glGetFloatv(pname, BUFF(GLfloat, params));
 }
 
 M(void, glGetIntegerv, jint pname, jobject params) {
-	GLint * cparams = (GLint *)env->GetDirectBufferAddress(params);
-	glGetIntegerv(pname, cparams);
+	glGetIntegerv(pname, BUFF(GLint, params));
 }
 
 M(void, glPushAttrib, jint mask) {
@@ -197,4 +190,128 @@ M(void, glFlush) {
 
 M(void, glHint, jint target, jint mode) {
 	glHint(target, mode);
+}
+
+M(void, glClearDepth, jdouble depth) {
+	glClearDepth(depth);
+}
+
+M(void, glDepthFunc, jint func) {
+	glDepthFunc(func);
+}
+
+M(void, glDepthMask, jboolean flag) {
+	glDepthMask(flag);
+}
+
+M(void, glDepthRange, jdouble near_val, jdouble far_val) {
+	glDepthRange(near_val, far_val);
+}
+
+M(void, glClearAccum, jfloat red, jfloat green, jfloat blue, jfloat alpha) {
+	glClearAccum(red, green, blue, alpha);
+}
+
+M(void, glAccum, int op, jfloat value) {
+	glAccum(op, value);
+}
+
+M(void, glMatrixMode, jint mode) {
+	glMatrixMode(mode);
+}
+
+M(void, glOrtho, jdouble left, jdouble right, jdouble bottom, jdouble top, jdouble near_val, jdouble far_val) {
+	glOrtho(left, right, bottom, top, near_val, far_val);
+}
+
+M(void, glFrustum, jdouble left, jdouble right, jdouble bottom, jdouble top, jdouble near_val, jdouble far_val) {
+	glFrustum(left, right, bottom, top, near_val, far_val);
+}
+
+M(void, glViewport, jint x, jint y, jint width, jint height) {
+	glViewport(x, y, width, height);
+}
+
+M(void, glPushMatrix) {
+	glPushMatrix();
+}
+
+M(void, glPopMatrix) {
+	glPopMatrix();
+}
+
+M(void, glLoadIdentity) {
+	glLoadIdentity();
+}
+
+M(void, glLoadMatrixd, jobject m) {
+	glLoadMatrixd(BUFF(GLdouble, m));
+}
+
+M(void, glLoadMatrixf, jobject m) {
+	glLoadMatrixf(BUFF(GLfloat, m));
+}
+
+M(void, glMultMatrixd, jobject m) {
+	glMultMatrixd(BUFF(GLdouble, m));
+}
+
+M(void, glMultMatrixf, jobject m) {
+	glMultMatrixf(BUFF(GLfloat, m));
+}
+
+M(void, glRotated, jdouble angle, jdouble x, jdouble y, jdouble z) {
+	glRotated(angle, x, y, z);
+}
+
+M(void, glRotatef, jfloat angle, jfloat x, jfloat y, jfloat z) {
+	glRotatef(angle, x, y, z);
+}
+
+M(void, glScaled, jdouble x, jdouble y, jdouble z) {
+	glScaled(x, y, z);
+}
+
+M(void, glScalef, jfloat x, jfloat y, jfloat z) {
+	glScalef(x, y, z);
+}
+
+M(void, glTranslated, jdouble x, jdouble y, jdouble z) {
+	glTranslated(x, y, z);
+}
+
+M(void, glTranslatef, jfloat x, jfloat y, jfloat z) {
+	glTranslatef(x, y, z);
+}
+
+M(jboolean, glIsList, jint list) {
+	return glIsList(list) ? JNI_TRUE : JNI_FALSE;
+}
+
+M(void, glDeleteLists, jint list, jint range) {
+	glDeleteLists(list, range);
+}
+
+M(jint, glGenLists, jint range) {
+	return glGenLists(range);
+}
+
+M(void, glNewList, jint list, jint mode) {
+	glNewList(list, mode);
+}
+
+M(void, glEndList) {
+	glEndList();
+}
+
+M(void, glCallList, jint list) {
+	glCallList(list);
+}
+
+M(void, glCallLists, jint n, jint type, jobject lists) {
+	glCallLists(n, type, BUFF(GLvoid, lists));
+}
+
+M(void, glListBase, jint base) {
+	glListBase(base);
 }
