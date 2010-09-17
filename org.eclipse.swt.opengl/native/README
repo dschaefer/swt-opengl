@@ -1,0 +1,4 @@
+For those looking at this on github and wondering how I'll ever get this
+in with the JNI header files here, don't worry. I'll remove them before
+that. There just here to get me started and because the CDT is having problems
+with scanner discovery, yada yada...

@@ -86,3 +86,7 @@ M(void, glGetPolygonStipple, jobject mask) {
 	GLubyte * cmask = (GLubyte *)env->GetDirectBufferAddress(mask);
 	glGetPolygonStipple(cmask);
 }
+
+M(void, glEdgeFlag, boolean flag) {
+	glEdgeFlag(flag);
+}
