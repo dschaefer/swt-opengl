@@ -624,10 +624,10 @@ public class GL {
 	public static native void glPolygonStipple(Buffer mask);
 	public static native void glGetPolygonStipple(Buffer mask);
 	public static native void glEdgeFlag(boolean flag);
-	public static native void glEdgeFlagv(boolean[] flag);
+	public static native void glEdgeFlagv(Buffer flag);
 	public static native void glScissor(int x, int y, int width, int height);
-	public static native void glClipPlane(int plane, double[] equation);
-	public static native void glGetClipPlane(int plane, double[][] equation);
+	public static native void glClipPlane(int plane, Buffer equation); // double equation[4]
+	public static native void glGetClipPlane(int plane, Buffer equation); // double equation[4]
 	public static native void glDrawBuffer(int mode);
 	public static native void glReadBuffer(int mode);
 	public static native void glEnable(int cap);
@@ -635,10 +635,10 @@ public class GL {
 	public static native boolean glIsEnabled(int cap);
 	public static native void glEnableClientState(int cap);
 	public static native void glDisableClientState(int cap);
-	public static native void glGetBooleanv(int pname, boolean[] params);
-	public static native void glGetDoublev(int pname, double[] params);
-	public static native void glGetFloatv(int pname, float[] params);
-	public static native void glGetIntegerv(int pname, int[] params);
+	public static native void glGetBooleanv(int pname, Buffer params); // boolean * params
+	public static native void glGetDoublev(int pname, Buffer params); // double * params
+	public static native void glGetFloatv(int pname, Buffer params); // float * params
+	public static native void glGetIntegerv(int pname, Buffer params); // int * params
 	public static native void glPushAttrib(int mask);
 	public static native void glPopAttrib();
 	public static native void glPushClientAttrib(int mask);
