@@ -373,7 +373,7 @@ M(void, glVertex4s, jshort x, jshort y, jshort z, jshort w) {
 }
 
 M(void, glVertex2dv, jobject v) {
-	glVertext2d(BUFF(GLdouble, v));
+	glVertex2dv(BUFF(GLdouble, v));
 }
 
 M(void, glVertex2fv, jobject v) {
@@ -492,12 +492,12 @@ M(void, glIndexiv, jobject c) {
 	glIndexiv(BUFF(GLint, c));
 }
 
-M(void, glIndexsv, jobect c) {
+M(void, glIndexsv, jobject c) {
 	glIndexsv(BUFF(GLshort, c));
 }
 
 M(void, glIndexubv, jobject c) {
-	glIndexubv(BUFF(GLbyte, c));
+	glIndexubv(BUFF(GLubyte, c));
 }
 
 M(void, glColor3b, jbyte red, jbyte green, jbyte blue) {
@@ -625,7 +625,7 @@ M(void, glColor4uiv, jobject v) {
 }
 
 M(void, glColor4usv, jobject v) {
-	glColor4usv(BUFF(GLshort, v));
+	glColor4usv(BUFF(GLushort, v));
 }
 
 M(void, glTexCoord1d, jdouble s) {
@@ -981,11 +981,11 @@ M(void, glPixelMapfv, jint map, jint mapsize, jobject values) {
 }
 
 M(void, glPixelMapuiv, jint map, jint mapsize, jobject values) {
-	glPixelMapuiv(map, mapsize, BUFF(GLint, values));
+	glPixelMapuiv(map, mapsize, BUFF(GLuint, values));
 }
 
 M(void, glPixelMapusv, jint map, jint mapsize, jobject values) {
-	glPixelMapusv(map, mapsize, BUFF(GLshort, values));
+	glPixelMapusv(map, mapsize, BUFF(GLushort, values));
 }
 
 M(void, glGetPixelMapfv, jint map, jobject values) {
@@ -993,11 +993,11 @@ M(void, glGetPixelMapfv, jint map, jobject values) {
 }
 
 M(void, glGetPixelMapuiv, jint map, jobject values) {
-	glGetPixelMapuiv(map, BUFF(GLint, values));
+	glGetPixelMapuiv(map, BUFF(GLuint, values));
 }
 
 M(void, glGetPixelMapusv, jint map, jobject values) {
-	glGetPixelMapusv(map, BUFF(GLshort, values));
+	glGetPixelMapusv(map, BUFF(GLushort, values));
 }
 
 M(void, glBitmap, jint width, jint height, jfloat xorig, jfloat yorig, jfloat xmove, jfloat ymove, jobject bitmap) {
@@ -1052,7 +1052,7 @@ M(void, glTexGenfv, jint coord, jint pname, jobject params) {
 	glTexGenfv(coord, pname, BUFF(GLfloat, params));
 }
 
-M(void, glTexGeniv, jint coord, jint pname, Buffer params) {
+M(void, glTexGeniv, jint coord, jint pname, jobject params) {
 	glTexGeniv(coord, pname, BUFF(GLint, params));
 }
 
@@ -1136,65 +1136,230 @@ M(void, glGetTexImage, jint target, jint level, jint format, jint type, jobject 
 	glGetTexImage(target, level, format, type, BUFF(GLvoid, pixels));
 }
 
-	public static native void glMap1d(int target, double u1, double u2, int stride, int order, double[] points);
-	public static native void glMap1f(int target, float u1, float u2, int stride, int order, float[] points);
-	public static native void glMap2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points);
-	public static native void glMap2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points);
-	public static native void glGetMapdv(int target, int query, double[][] v);
-	public static native void glGetMapfv(int target, int query, float[][] v);
-	public static native void glGetMapiv(int target, int query, int[][] v);
-	public static native void glEvalCoord1d(double u);
-	public static native void glEvalCoord1f(float u);
-	public static native void glEvalCoord1dv(double[] u);
-	public static native void glEvalCoord1fv(float[] u);
-	public static native void glEvalCoord2d(double u, double v);
-	public static native void glEvalCoord2f(float u, float v);
-	public static native void glEvalCoord2dv(double[] u);
-	public static native void glEvalCoord2fv(float[] u);
-	public static native void glMapGrid1d(int un, double u1, double u2);
-	public static native void glMapGrid1f(int un, float u1, float u2);
-	public static native void glMapGrid2d(int un, double u1, double u2, int vn, double v1, double v2);
-	public static native void glMapGrid2f(int un, float u1, float u2, int vn, float v1, float v2);
-	public static native void glEvalPoint1(int i);
-	public static native void glEvalPoint2(int i, int j);
-	public static native void glEvalMesh1(int mode, int i1, int i2);
-	public static native void glEvalMesh2(int mode, int i1, int i2, int j1, int j2);
+M(void, glMap1d, jint target, jdouble u1, jdouble u2, jint stride, jint order, jobject points) {
+	glMap1d(target, u1, u2, stride, order, BUFF(GLdouble, points));
+}
 
-	public static native void glFogf(int pname, float param);
-	public static native void glFogi(int pname, int param);
-	public static native void glFogfv(int pname, float[] params);
-	public static native void glFogiv(int pname, int[] params );
+M(void, glMap1f, jint target, jfloat u1, jfloat u2, jint stride, jint order, jobject points) {
+	glMap1f(target, u1, u2, stride, order, BUFF(GLfloat, points));
+}
 
-	public static native void glFeedbackBuffer(int size, int type, float[][] buffer);
-	public static native void glPassThrough(float token);
-	public static native void glSelectBuffer(int size, int[][] buffer);
-	public static native void glInitNames();
-	public static native void glLoadName(int name);
-	public static native void glPushName(int name);
-	public static native void glPopName();
+M(void, glMap2d, jint target, jdouble u1, jdouble u2, jint ustride, jint uorder, jdouble v1, jdouble v2, jint vstride, jint vorder, jobject points) {
+	glMap2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, BUFF(GLdouble, points));
+}
 
-	public static native void glGenTextures(int n, int[][] textures);
-	public static native void glDeleteTextures(int n, int[] textures);
-	public static native void glBindTexture(int target, int texture);
-	public static native void glPrioritizeTextures(int n, int[] textures, float[] priorities);
-	public static native boolean glAreTexturesResident(int n, int[] textures, boolean[][] residences);
-	public static native boolean glIsTexture(int texture);
+M(void, glMap2f, jint target, jfloat u1, jfloat u2, jint ustride, jint uorder, jfloat v1, jfloat v2, jint vstride, jint vorder, jobject points) {
+	glMap2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, BUFF(GLfloat, points));
+}
 
-	public static native void glTexSubImage1D(int target, int level, int xoffset, int width, int format, int type, Buffer pixels);
-	public static native void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, Buffer pixels);
-	public static native void glCopyTexImage1D(int target, int level, int internalformat, int x, int y, int width, int border);
-	public static native void glCopyTexImage2D(int target, int level, int internalformat, int x, int y, int width, int height, int border);
-	public static native void glCopyTexSubImage1D(int target, int level, int xoffset, int x, int y, int width);
-	public static native void glCopyTexSubImage2D(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height);
+M(void, glGetMapdv, jint target, jint query, jobject v) {
+	glGetMapdv(target, query, BUFF(GLdouble, v));
+}
 
-	public static native void glVertexPointer(int size, int type, int stride, Buffer ptr);
-	public static native void glNormalPointer(int type, int stride, Buffer ptr);
-	public static native void glColorPointer(int size, int type, int stride, Buffer ptr);
-	public static native void glIndexPointer(int type, int stride, Buffer ptr);
-	public static native void glTexCoordPointer(int size, int type, int stride, Buffer ptr);
-	public static native void glEdgeFlagPointer(int stride, Buffer ptr);
-	public static native void glGetPointerv(int pname, Buffer params);
-	public static native void glArrayElement(int i);
-	public static native void glDrawArrays(int mode, int first, int count);
-	public static native void glDrawElements(int mode, int count, int type, Buffer indices);
-	public static native void glInterleavedArrays(int format, int stride, Buffer pointer);
+M(void, glGetMapfv, jint target, jint query, jobject v) {
+	glGetMapfv(target, query, BUFF(GLfloat, v));
+}
+
+M(void, glGetMapiv, jint target, jint query, jobject v) {
+	glGetMapiv(target, query, BUFF(GLint, v));
+}
+
+M(void, glEvalCoord1d, jdouble u) {
+	glEvalCoord1d(u);
+}
+
+M(void, glEvalCoord1f, jfloat u) {
+	glEvalCoord1f(u);
+}
+
+M(void, glEvalCoord1dv, jobject u) {
+	glEvalCoord1dv(BUFF(GLdouble, u));
+}
+
+M(void, glEvalCoord1fv, jobject u) {
+	glEvalCoord1fv(BUFF(GLfloat, u));
+}
+
+M(void, glEvalCoord2d, jdouble u, jdouble v) {
+	glEvalCoord2d(u, v);
+}
+
+M(void, glEvalCoord2f, jfloat u, jfloat v) {
+	glEvalCoord2f(u, v);
+}
+
+M(void, glEvalCoord2dv, jobject u) {
+	glEvalCoord2dv(BUFF(GLdouble, u));
+}
+
+M(void, glEvalCoord2fv, jobject u) {
+	glEvalCoord2fv(BUFF(GLfloat, u));
+}
+
+M(void, glMapGrid1d, jint un, jdouble u1, jdouble u2) {
+	glMapGrid1d(un, u1, u2);
+}
+
+M(void, glMapGrid1f, jint un, jfloat u1, jfloat u2) {
+	glMapGrid1f(un, u1, u2);
+}
+
+M(void, glMapGrid2d, jint un, jdouble u1, jdouble u2, jint vn, jdouble v1, jdouble v2) {
+	glMapGrid2d(un, u1, u2, vn, v1, v2);
+}
+
+M(void, glMapGrid2f, jint un, jfloat u1, jfloat u2, jint vn, jfloat v1, jfloat v2) {
+	glMapGrid2f(un, u1, u2, vn, v1, v2);
+}
+
+M(void, glEvalPoint1, jint i) {
+	glEvalPoint1(i);
+}
+
+M(void, glEvalPoint2, jint i, jint j) {
+	glEvalPoint2(i, j);
+}
+
+M(void, glEvalMesh1, jint mode, jint i1, jint i2) {
+	glEvalMesh1(mode, i1, i2);
+}
+
+M(void, glEvalMesh2, jint mode, jint i1, jint i2, jint j1, jint j2) {
+	glEvalMesh2(mode, i1, i2, j1, j2);
+}
+
+M(void, glFogf, jint pname, jfloat param) {
+	glFogf(pname, param);
+}
+
+M(void, glFogi, jint pname, jint param) {
+	glFogi(pname, param);
+}
+
+M(void, glFogfv, jint pname, jobject params) {
+	glFogfv(pname, BUFF(GLfloat, params));
+}
+
+M(void, glFogiv, jint pname, jobject params) {
+	glFogiv(pname, BUFF(GLint, params));
+}
+
+M(void, glFeedbackBuffer, jint size, jint type, jobject buffer) {
+	glFeedbackBuffer(size, type, BUFF(GLfloat, buffer));
+}
+
+M(void, glPassThrough, jfloat token) {
+	glPassThrough(token);
+}
+
+M(void, glSelectBuffer, jint size, jobject buffer) {
+	glSelectBuffer(size, BUFF(GLuint, buffer));
+}
+
+M(void, glInitNames) {
+	glInitNames();
+}
+
+M(void, glLoadName, jint name) {
+	glLoadName(name);
+}
+
+M(void, glPushName, jint name) {
+	glPushName(name);
+}
+
+M(void, glPopName) {
+	glPopName();
+}
+
+M(void, glGenTextures, jint n, jobject textures) {
+	glGenTextures(n, BUFF(GLuint, textures));
+}
+
+M(void, glDeleteTextures, jint n, jobject textures) {
+	glDeleteTextures(n, BUFF(GLuint, textures));
+}
+
+M(void, glBindTexture, jint target, jint texture) {
+	glBindTexture(target, texture);
+}
+
+M(void, glPrioritizeTextures, jint n, jobject textures, jobject priorities) {
+	glPrioritizeTextures(n, BUFF(GLuint, textures), BUFF(GLfloat, priorities));
+}
+
+M(jboolean, glAreTexturesResident, jint n, jobject textures, jobject residences) {
+	return glAreTexturesResident(n, BUFF(GLuint, textures), BUFF(GLboolean, residences));
+}
+
+M(jboolean, glIsTexture, jint texture) {
+	return glIsTexture(texture);
+}
+
+M(void, glTexSubImage1D, jint target, jint level, jint xoffset, jint width, jint format, jint type, jobject pixels) {
+	glTexSubImage1D(target, level, xoffset, width, format, type, BUFF(GLvoid, pixels));
+}
+
+M(void, glTexSubImage2D, jint target, jint level, jint xoffset, jint yoffset, jint width, jint height, jint format, jint type, jobject pixels){
+	glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, BUFF(GLvoid, pixels));
+}
+
+M(void, glCopyTexImage1D, jint target, jint level, jint internalformat, jint x, jint y, jint width, jint border) {
+	glCopyTexImage1D(target, level, internalformat, x, y, width, border);
+}
+
+M(void, glCopyTexImage2D, jint target, jint level, jint internalformat, jint x, jint y, jint width, jint height, jint border) {
+	glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
+}
+
+M(void, glCopyTexSubImage1D, jint target, jint level, jint xoffset, jint x, jint y, jint width) {
+	glCopyTexSubImage1D(target, level, xoffset, x, y, width);
+}
+
+M(void, glCopyTexSubImage2D, jint target, jint level, jint xoffset, jint yoffset, jint x, jint y, jint width, jint height) {
+	glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
+}
+
+M(void, glVertexPointer, jint size, jint type, jint stride, jobject ptr) {
+	glVertexPointer(size, type, stride, BUFF(GLvoid, ptr));
+}
+
+M(void, glNormalPointer, jint type, jint stride, jobject ptr) {
+	glNormalPointer(type, stride, BUFF(GLvoid, ptr));
+}
+
+M(void, glColorPointer, jint size, jint type, jint stride, jobject ptr) {
+	glColorPointer(size, type, stride, BUFF(GLvoid, ptr));
+}
+
+M(void, glIndexPointer, jint type, jint stride, jobject ptr) {
+	glIndexPointer(type, stride, BUFF(GLvoid, ptr));
+}
+
+M(void, glTexCoordPointer, jint size, jint type, jint stride, jobject ptr) {
+	glTexCoordPointer(size, type, stride, BUFF(GLvoid, ptr));
+}
+
+M(void, glEdgeFlagPointer, jint stride, jobject ptr) {
+	glEdgeFlagPointer(stride, BUFF(GLvoid, ptr));
+}
+
+M(void, glGetPointerv, jint pname, jobject params) {
+	glGetPointerv(pname, BUFF(GLvoid *, params));
+}
+
+M(void, glArrayElement, jint i) {
+	glArrayElement(i);
+}
+
+M(void, glDrawArrays, jint mode, jint first, jint count) {
+	glDrawArrays(mode, first, count);
+}
+
+M(void, glDrawElements, jint mode, jint count, jint type, jobject indices) {
+	glDrawElements(mode, count, type, BUFF(GLvoid, indices));
+}
+
+M(void, glInterleavedArrays, jint format, jint stride, jobject pointer) {
+	glInterleavedArrays(format, stride, BUFF(GLvoid, pointer));
+}

@@ -921,22 +921,22 @@ public class GL {
 
 	public static native void glFogf(int pname, float param);
 	public static native void glFogi(int pname, int param);
-	public static native void glFogfv(int pname, float[] params);
-	public static native void glFogiv(int pname, int[] params );
+	public static native void glFogfv(int pname, Buffer params);
+	public static native void glFogiv(int pname, Buffer params);
 
-	public static native void glFeedbackBuffer(int size, int type, float[][] buffer);
+	public static native void glFeedbackBuffer(int size, int type, Buffer buffer);
 	public static native void glPassThrough(float token);
-	public static native void glSelectBuffer(int size, int[][] buffer);
+	public static native void glSelectBuffer(int size, Buffer buffer);
 	public static native void glInitNames();
 	public static native void glLoadName(int name);
 	public static native void glPushName(int name);
 	public static native void glPopName();
 
-	public static native void glGenTextures(int n, int[][] textures);
-	public static native void glDeleteTextures(int n, int[] textures);
+	public static native void glGenTextures(int n, Buffer textures);
+	public static native void glDeleteTextures(int n, Buffer textures);
 	public static native void glBindTexture(int target, int texture);
-	public static native void glPrioritizeTextures(int n, int[] textures, float[] priorities);
-	public static native boolean glAreTexturesResident(int n, int[] textures, boolean[][] residences);
+	public static native void glPrioritizeTextures(int n, Buffer textures, Buffer priorities);
+	public static native boolean glAreTexturesResident(int n, Buffer textures, Buffer residences);
 	public static native boolean glIsTexture(int texture);
 
 	public static native void glTexSubImage1D(int target, int level, int xoffset, int width, int format, int type, Buffer pixels);
