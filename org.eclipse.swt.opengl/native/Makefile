@@ -1,7 +1,7 @@
 TARGET = ../os/win32/x86/swt-opengl.dll
 
-OBJS = gl.o
-LIBS = -lopengl32
+OBJS = gl.o glu.o
+LIBS = -lopengl32 -lglu32
 
 all:	$(TARGET)
 
