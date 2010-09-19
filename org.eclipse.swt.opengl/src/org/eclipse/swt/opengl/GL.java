@@ -19,7 +19,7 @@ public class GL {
 	}
 	
 	//
-	// GL_VERSION_1_1
+	// GL Version 1.1
 	//
 	
 	public static final int GL_FALSE = 0x0;
@@ -590,19 +590,19 @@ public class GL {
 	public static final int GL_CLIENT_ALL_ATTRIB_BITS  = 0xFFFFFFFF;
 
 	// type mapping
-	// GLenum -> int
-	// GLboolean -> boolean
+	// int -> int
+	// boolean -> boolean
 	// GLbitfield -> int
 	// GLvoid -> void
 	// GLbyte -> byte
 	// GLshort -> short
-	// GLint -> int
+	// int -> int
 	// GLubyte -> byte
 	// GLushort -> short
-	// GLuint -> int
-	// GLsizei -> int
-	// GLfloat -> float
-	// GLclampf -> float
+	// int -> int
+	// int -> int
+	// float -> float
+	// float -> float
 	// GLdouble -> double
 	// GLclampd -> double
 
@@ -956,6 +956,93 @@ public class GL {
 	public static native void glArrayElement(int i);
 	public static native void glDrawArrays(int mode, int first, int count);
 	public static native void glDrawElements(int mode, int count, int type, Buffer indices);
-	public static native void glInterleavedArrays(int format, int stride, Buffer pointer);
+	public static native void interleavedArrays(int format, int stride, Buffer pointer);
+
+	//
+	// GL Version 1.2
+	//
+
+	public static final int GL_UNSIGNED_BYTE_3_3_2            = 0x8032;
+	public static final int GL_UNSIGNED_SHORT_4_4_4_4         = 0x8033;
+	public static final int GL_UNSIGNED_SHORT_5_5_5_1         = 0x8034;
+	public static final int GL_UNSIGNED_INT_8_8_8_8           = 0x8035;
+	public static final int GL_UNSIGNED_INT_10_10_10_2        = 0x8036;
+	public static final int GL_TEXTURE_BINDING_3D             = 0x806A;
+	public static final int GL_PACK_SKIP_IMAGES               = 0x806B;
+	public static final int GL_PACK_IMAGE_HEIGHT              = 0x806C;
+	public static final int GL_UNPACK_SKIP_IMAGES             = 0x806D;
+	public static final int GL_UNPACK_IMAGE_HEIGHT            = 0x806E;
+	public static final int GL_TEXTURE_3D                     = 0x806F;
+	public static final int GL_PROXY_TEXTURE_3D               = 0x8070;
+	public static final int GL_TEXTURE_DEPTH                  = 0x8071;
+	public static final int GL_TEXTURE_WRAP_R                 = 0x8072;
+	public static final int GL_MAX_3D_TEXTURE_SIZE            = 0x8073;
+	public static final int GL_UNSIGNED_BYTE_2_3_3_REV        = 0x8362;
+	public static final int GL_UNSIGNED_SHORT_5_6_5           = 0x8363;
+	public static final int GL_UNSIGNED_SHORT_5_6_5_REV       = 0x8364;
+	public static final int GL_UNSIGNED_SHORT_4_4_4_4_REV     = 0x8365;
+	public static final int GL_UNSIGNED_SHORT_1_5_5_5_REV     = 0x8366;
+	public static final int GL_UNSIGNED_INT_8_8_8_8_REV       = 0x8367;
+	public static final int GL_UNSIGNED_INT_2_10_10_10_REV    = 0x8368;
+	public static final int GL_BGR                            = 0x80E0;
+	public static final int GL_BGRA                           = 0x80E1;
+	public static final int GL_MAX_ELEMENTS_VERTICES          = 0x80E8;
+	public static final int GL_MAX_ELEMENTS_INDICES           = 0x80E9;
+	public static final int GL_CLAMP_TO_EDGE                  = 0x812F;
+	public static final int GL_TEXTURE_MIN_LOD                = 0x813A;
+	public static final int GL_TEXTURE_MAX_LOD                = 0x813B;
+	public static final int GL_TEXTURE_BASE_LEVEL             = 0x813C;
+	public static final int GL_TEXTURE_MAX_LEVEL              = 0x813D;
+	public static final int GL_SMOOTH_POINT_SIZE_RANGE        = 0x0B12;
+	public static final int GL_SMOOTH_POINT_SIZE_GRANULARITY  = 0x0B13;
+	public static final int GL_SMOOTH_LINE_WIDTH_RANGE        = 0x0B22;
+	public static final int GL_SMOOTH_LINE_WIDTH_GRANULARITY  = 0x0B23;
+	public static final int GL_ALIASED_LINE_WIDTH_RANGE       = 0x846E;
+
+	public static final int GL_RESCALE_NORMAL                 = 0x803A;
+	public static final int GL_LIGHT_MODEL_COLOR_CONTROL      = 0x81F8;
+	public static final int GL_SINGLE_COLOR                   = 0x81F9;
+	public static final int GL_SEPARATE_SPECULAR_COLOR        = 0x81FA;
+	public static final int GL_ALIASED_POINT_SIZE_RANGE       = 0x846D;
+	
+	public static native void glBlendColor(float red, float green, float blue, float alpha);
+	public static native void glBlendEquation(int mode);
+	public static native void glDrawRangeElements(int mode, int start, int end, int count, int type, Buffer indices);
+	public static native void glTexImage3D(int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, Buffer pixels);
+	public static native void glTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Buffer pixels);
+	public static native void glCopyTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height);
+
+	public static native void glColorTable(int target, int internalformat, int width, int format, int type, Buffer table);
+	public static native void glColorTableParameterfv(int target, int pname, Buffer params);
+	public static native void glColorTableParameteriv(int target, int pname, Buffer params);
+	public static native void glCopyColorTable(int target, int internalformat, int x, int y, int width);
+	public static native void glGetColorTable(int target, int format, int type, Buffer table);
+	public static native void glGetColorTableParameterfv(int target, int pname, Buffer params);
+	public static native void glGetColorTableParameteriv(int target, int pname, Buffer params);
+	public static native void glColorSubTable(int target, int start, int count, int format, int type, Buffer data);
+	public static native void glCopyColorSubTable(int target, int start, int x, int y, int width);
+	public static native void glConvolutionFilter1D(int target, int internalformat, int width, int format, int type, Buffer image);
+	public static native void glConvolutionFilter2D(int target, int internalformat, int width, int height, int format, int type, Buffer image);
+	public static native void glConvolutionParameterf(int target, int pname, float params);
+	public static native void glConvolutionParameterfv(int target, int pname, Buffer params);
+	public static native void glConvolutionParameteri(int target, int pname, int params);
+	public static native void glConvolutionParameteriv(int target, int pname, Buffer params);
+	public static native void glCopyConvolutionFilter1D(int target, int internalformat, int x, int y, int width);
+	public static native void glCopyConvolutionFilter2D(int target, int internalformat, int x, int y, int width, int height);
+	public static native void glGetConvolutionFilter(int target, int format, int type, Buffer image);
+	public static native void glGetConvolutionParameterfv(int target, int pname, Buffer params);
+	public static native void glGetConvolutionParameteriv(int target, int pname, Buffer params);
+	public static native void glGetSeparableFilter(int target, int format, int type, Buffer row, Buffer column, Buffer span);
+	public static native void glSeparableFilter2D(int target, int internalformat, int width, int height, int format, int type, Buffer row, Buffer column);
+	public static native void glGetHistogram(int target, boolean reset, int format, int type, Buffer values);
+	public static native void glGetHistogramParameterfv(int target, int pname, Buffer params);
+	public static native void glGetHistogramParameteriv(int target, int pname, Buffer params);
+	public static native void glGetMinmax(int target, boolean reset, int format, int type, Buffer values);
+	public static native void glGetMinmaxParameterfv (int target, int pname, Buffer params);
+	public static native void glGetMinmaxParameteriv (int target, int pname, Buffer params);
+	public static native void glHistogram (int target, int width, int internalformat, boolean sink);
+	public static native void glMinmax (int target, int internalformat, boolean sink);
+	public static native void glResetHistogram (int target);
+	public static native void glResetMinmax (int target);
 
 }

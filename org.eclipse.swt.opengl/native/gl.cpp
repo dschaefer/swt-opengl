@@ -10,7 +10,6 @@
  *******************************************************************************/
 
 #include <GL/gl.h>
-#include "glext.h"
 #include "jni.h"
 
 #define M(type, func, args...) \
@@ -171,7 +170,15 @@ M(jint, glRenderMode, jint mode) {
 	return glRenderMode(mode);
 }
 
+GLenum swtGLError;
+
+void swtGLNotImplemented() {
+	swtGLError = GL_INVALID_OPERATION;
+}
+
 M(jint, glGetError) {
+	if (swtGLError != GL_NO_ERROR)
+		return swtGLError;
 	return glGetError();
 }
 
